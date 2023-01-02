@@ -26,9 +26,9 @@ let main = async function () {
     //   [`cp`, `"${file}"`, `"/cache/${filename}"`]
     // ]
 
-    for (let j = 0; j < commandsCache.length; j++) {
-      await ShellSpawn(commandsCache[j])
-    }
+    // for (let j = 0; j < commandsCache.length; j++) {
+    //   await ShellSpawn(commandsCache[j])
+    // }
 
     // -----------------------
 
