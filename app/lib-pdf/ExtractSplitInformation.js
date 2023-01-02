@@ -1,5 +1,5 @@
 const {AnnotationFactory} = require('annotpdf');
-
+const path = require('path')
 
 module.exports = async function (inputFile) {
 
