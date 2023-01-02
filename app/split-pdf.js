@@ -21,10 +21,10 @@ let main = async function () {
       filenameNoExt = filenameNoExt.slice(0, -4)
     }
 
-    let commandsCache = [
-      ["rm", "-rf", `/cache/*`],
-      [`cp`, `"${file}"`, `"/cache/${filename}"`]
-    ]
+    // let commandsCache = [
+    //   ["rm", "-rf", `/cache/*`],
+    //   [`cp`, `"${file}"`, `"/cache/${filename}"`]
+    // ]
 
     for (let j = 0; j < commandsCache.length; j++) {
       await ShellSpawn(commandsCache[j])
@@ -32,9 +32,9 @@ let main = async function () {
 
     // -----------------------
 
-    let cacheFile = path.resolve('/cache/', filename)
+    let cacheFile = file
     let splitInformation = await ExtractSplitInformation(cacheFile)
-    console.log(splitInformation)
+    // console.log(splitInformation)
     await SplitPDF(cacheFile, splitInformation)
 
     // -----------------------
