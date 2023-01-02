@@ -24,7 +24,7 @@ let main = async function () {
 
     let commandsCache = [
       ["rm", "-rf", `/cache/*`],
-      [`cp`, file, `/cache/${filename}`]
+      [`cp`, `"${file}"`, `/cache/${filename}`]
     ]
 
     for (let j = 0; j < commandsCache.length; j++) {
@@ -40,7 +40,7 @@ let main = async function () {
     // -----------------------
     
     let commandsEnd = [
-      [`rm`, `/cache/${filename}`],
+      [`rm`, `"/cache/${filename}"`],
       ["mv", `/cache/*.pdf`, `/input/`]
     ]
 
