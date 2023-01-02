@@ -31,7 +31,7 @@ module.exports = async function (inputFile, splitInformation) {
     }
 
     // let cmd = `qpdf "${inputFile}" --pages "${inputFile}" ${start}-${end} -- "${path.join(__dirname, '../output/' + basenameNoExt + '/',  filename + ' - ' + basename)}"`
-    let cmd = [`qpdf`, `"${inputFile}"`, `--pages`, `"${inputFile}"`, `${start}-${end}`, `--`, `"${path.join(__dirname, '../output/' + basenameNoExt + '/',  filename + ' - ' + basename)}"`]
+    let cmd = [`qpdf`, `"${inputFile}"`, `--pages`, `"${inputFile}"`, `${start}-${end}`, `--`, `"${path.join(__dirname, '../../input/' + basenameNoExt + '/',  filename + ' - ' + basename)}"`]
     // console.log(cmd)
     
     await ShellSpawn(cmd)

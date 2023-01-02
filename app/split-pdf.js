@@ -39,15 +39,15 @@ let main = async function () {
 
     // -----------------------
     
-    let commandsEnd = [
-      [`rm`, `"/cache/${filename}"`],
-      ["mv", `/cache/*.pdf`, `/input/`]
-    ]
+    // let commandsEnd = [
+    //   [`rm`, `"/cache/${filename}"`],
+    //   ["mv", `/cache/*.pdf`, `/input/`]
+    // ]
 
 
-    for (let j = 0; j < commandsEnd.length; j++) {
-      await ShellSpawn(commandsEnd[j])
-    }
+    // for (let j = 0; j < commandsEnd.length; j++) {
+    //   await ShellSpawn(commandsEnd[j])
+    // }
   }
 }
 
