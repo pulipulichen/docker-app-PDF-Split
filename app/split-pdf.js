@@ -4,6 +4,9 @@ const GetExistedArgv = require('./lib/GetExistedArgv')
 const path = require('path')
 const fs = require('fs')
 
+const ExtractSplitInformation = require('./lib-pdf/ExtractSplitInformation.js')
+const SplitPDF = require('./lib-pdf/SplitPDF.js')
+
 let main = async function () {
   let files = GetExistedArgv()
 
@@ -19,29 +22,32 @@ let main = async function () {
       filenameNoExt = filenameNoExt.slice(0, -4)
     }
 
-    let commandsUnzip = [
-      `rm -rf /cache/*`,
-      `cp "${file}" "/cache/${filename}"`,
-      `unzip -d "/cache/img" "/cache/${filename}"`
+    let commandsCache = [
+      ["rm", "-rf", `/cache/*`],
+      [`cp`, file, `/cache/${filename}`]
     ]
-    for (let j = 0; j < commandsUnzip.length; j++) {
-      await ShellSpawn(commandsUnzip[j])
+
+    for (let j = 0; j < commandsCache.length; j++) {
+      await ShellSpawn(commandsCache[j])
     }
 
-    // 列出檔案名稱
-    let imgs = fs.readdirSync('/cache/img/')
-    imgs.sort((a, b) => {
-      let aID = Number(a.match(/\d+/)[0])
-      let bID = Number(b.match(/\d+/)[0])
+    // -----------------------
 
-      return (aID - bID)
-    })
+    let cacheFile = path.resolve('/cache/', filename)
+    let splitInformation = await ExtractSplitInformation(cacheFile)
+    await SplitPDF(cacheFile, splitInformation)
 
-    imgs = imgs.map(filename => {
-      return `"/cache/img/${filename}"`
-    })
+    // -----------------------
+    
+    let commandsEnd = [
+      [`rm`, `/cache/${filename}`],
+      ["mv", `/cache/*.pdf`, `/input/`]
+    ]
 
-    await ShellSpawn(`img2pdf -o "/input/${filenameNoExt}.pdf" ${imgs.join(" ")}`)
+
+    for (let j = 0; j < commandsEnd.length; j++) {
+      await ShellSpawn(commandsEnd[j])
+    }
   }
 }
 

@@ -38,7 +38,7 @@ IF %ERRORLEVEL% NEQ 0 (
   exit
 )
 
-set PROJECT_NAME=docker-ZIP-to-PDF
+set PROJECT_NAME=docker-app-PDF-Split
 
 if not exist "%temp%\%PROJECT_NAME%" (
   c:

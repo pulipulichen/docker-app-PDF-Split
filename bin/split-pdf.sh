@@ -35,7 +35,7 @@ fi
 # ---------------
 # 安裝或更新專案
 
-PROJECT_NAME=docker-ZIP-to-PDF
+PROJECT_NAME=docker-app-PDF-Split
 
 if [ -d "/tmp/${PROJECT_NAME}" ];
 then
