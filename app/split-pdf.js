@@ -34,6 +34,7 @@ let main = async function () {
 
     let cacheFile = path.resolve('/cache/', filename)
     let splitInformation = await ExtractSplitInformation(cacheFile)
+    console.log(splitInformation)
     await SplitPDF(cacheFile, splitInformation)
 
     // -----------------------
