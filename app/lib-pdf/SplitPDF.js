@@ -12,7 +12,7 @@ module.exports = async function (inputFile, splitInformation) {
     return false
   }
 
-  let basename = path.basename(inputFile)
+  // let basename = path.basename(inputFile)
   let basenameNoExt = path.parse(inputFile).name
 
   await ShellSpawn([`mkdir`, `-p`, `"${path.join(__dirname, '../../input/' + basenameNoExt)}"`])
