@@ -1,6 +1,6 @@
 const path = require('path')
 const ShellSpawn = require('../lib/ShellSpawn.js')
-
+const {AnnotationFactory} = require('annotpdf');
 
 module.exports = async function (inputFile, splitInformation) {
 
@@ -37,7 +37,7 @@ module.exports = async function (inputFile, splitInformation) {
   }
 
   // await execAsync(`LC_ALL=C; cd "${path.join(__dirname, '../output/')}"; 7z a -mx=9 -ms=on "./${basenameNoExt}.7z" ${files.join(' ')}`)
-  let compressCommand = `LC_ALL=C; cd "${path.join(__dirname, '../output/' + basenameNoExt)}"; zip -j -q -9 "../${basenameNoExt}.zip" *.pdf`
+  // let compressCommand = `LC_ALL=C; cd "${path.join(__dirname, '../output/' + basenameNoExt)}"; zip -j -q -9 "../${basenameNoExt}.zip" *.pdf`
   // console.log(compressCommand)
-  await execAsync(compressCommand)
+  // await execAsync(compressCommand)
 }
