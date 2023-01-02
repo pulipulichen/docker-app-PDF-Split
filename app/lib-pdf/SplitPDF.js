@@ -2,6 +2,7 @@ const path = require('path')
 const ShellSpawn = require('../lib/ShellSpawn.js')
 const {AnnotationFactory} = require('annotpdf');
 const pdf = require('pdf-page-counter')
+const fs = require('fs')
 
 module.exports = async function (inputFile, splitInformation) {
 

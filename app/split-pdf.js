@@ -2,7 +2,6 @@ const ShellSpawn = require('./lib/ShellSpawn')
 const GetExistedArgv = require('./lib/GetExistedArgv')
 
 const path = require('path')
-const fs = require('fs')
 
 const ExtractSplitInformation = require('./lib-pdf/ExtractSplitInformation.js')
 const SplitPDF = require('./lib-pdf/SplitPDF.js')
