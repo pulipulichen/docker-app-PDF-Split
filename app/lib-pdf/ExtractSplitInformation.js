@@ -29,7 +29,7 @@ module.exports = async function (inputFile) {
 				return false
 			}
 
-      let sub_filename = contents.slice(1)
+      let sub_filename = contents.slice(1).trim()
 			// console.log(page_number, sub_filename)
 
       splitInformation.push({
