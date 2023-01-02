@@ -33,6 +33,7 @@ module.exports = async function (inputFile) {
       sub_filename = sub_filename.replace(/\n/g, ' ')
       sub_filename = sub_filename.replace(/\r/g, ' ')
       sub_filename = sub_filename.replace(/\t/g, ' ')
+      sub_filename = sub_filename.replace(/[\u{0080}-\u{FFFF}]/gu, " ")
       while (sub_filename.indexOf('  ') > -1) {
         sub_filename = sub_filename.replace(/  /g, ' ')
       }
