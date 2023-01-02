@@ -30,6 +30,10 @@ module.exports = async function (inputFile) {
 			}
 
       let sub_filename = contents.slice(1).trim()
+      sub_filename = sub_filename.replace(/\n/g, ' ')
+      while (sub_filename.indexOf('  ') > -1) {
+        sub_filename = sub_filename.replace(/  /g, ' ')
+      }
 			// console.log(page_number, sub_filename)
 
       splitInformation.push({
