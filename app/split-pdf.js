@@ -17,7 +17,7 @@ let main = async function () {
 
     let filename = path.basename(file)
     let filenameNoExt = filename
-    if (filenameNoExt.endsWith('.zip')) {
+    if (filenameNoExt.endsWith('.pdf')) {
       filenameNoExt = filenameNoExt.slice(0, -4)
     }
 
