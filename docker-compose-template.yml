@@ -4,6 +4,8 @@ services:
     build: .
     tty: true
     command: [CMD]
+    environment:
+      - FILENAME_PREPEND=[FILENAME_PREPEND]
     volumes: 
       - ./app:/app/
       - ./cache:/cache/

@@ -77,12 +77,12 @@ if [ "${useParams}" == "true" ]; then
     var=`realpath "${var}"`
     # echo "${var}"
     cd "/tmp/${PROJECT_NAME}"
-    node "/tmp/${PROJECT_NAME}/index.js" "${var}"
+    node "/tmp/${PROJECT_NAME}/index-filename-prepend.js" "${var}"
   done
 else
   if [ ! -f "${var}" ]; then
     echo "$var does not exist."
     exit
   fi
-  node "/tmp/${PROJECT_NAME}/index.js" "${var}"
+  node "/tmp/${PROJECT_NAME}/index-filename-prepend.js" "${var}"
 fi
