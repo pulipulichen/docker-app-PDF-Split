@@ -33,7 +33,7 @@ module.exports = async function (inputFile, splitInformation) {
 
     // let cmd = `qpdf "${inputFile}" --pages "${inputFile}" ${start}-${end} -- "${path.join(__dirname, '../output/' + basenameNoExt + '/',  filename + ' - ' + basename)}"`
     // let outputName = filename + ' - ' + basenameNoExt
-    let outputName = filename
+    let outputName = filename.trim()
     if (outputName.length > 50) {
       outputName = outputName.slice(0, 50).trim()
     }
@@ -41,7 +41,7 @@ module.exports = async function (inputFile, splitInformation) {
 		outputName = outputName.replace(/\?/g, '')
 
     if (process.env.FILENAME_PREPEND === 'true') {
-      outputName = basenameNoExt + ' - ' + outputName
+      outputName = basenameNoExt + '-' + outputName
     }
 
     outputName = outputName + '.pdf'
