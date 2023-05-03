@@ -41,8 +41,8 @@ module.exports = async function (inputFile, splitInformation) {
 		outputName = outputName.replace(/\?/g, '')
 
     if (process.env.FILENAME_PREPEND === 'true') {
-      outputName = basenameNoExt + '-' + outputName
-    }
+      outputName = basenameNoExt + '_' + outputName
+    } 
 
     outputName = outputName + '.pdf'
     let cmd = [`qpdf`, `--decrypt`, `"${inputFile}"`, `--pages`, `"${inputFile}"`, `${start}-${end}`, `--`, `"${path.join(__dirname, '../../input/' + basenameNoExt + '/',  outputName)}"`]
