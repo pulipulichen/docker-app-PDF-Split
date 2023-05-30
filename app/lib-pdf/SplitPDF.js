@@ -6,8 +6,7 @@ const fs = require('fs')
 
 module.exports = async function (inputFile, splitInformation) {
 
-  if (Array.isArray(splitInformation) === false || 
-      splitInformation.length < 2) {
+  if (Array.isArray(splitInformation) === false) {
     console.error('splitInformation is incompleted: ' + inputFile)
     return false
   }
