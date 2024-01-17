@@ -2,6 +2,7 @@ const ShellSpawn = require('./lib/ShellSpawn')
 const GetFiles = require('./lib/GetFiles')
 
 const path = require('path')
+const fs = require('fs')
 
 const ExtractSplitInformation = require('./lib-pdf/ExtractSplitInformation.js')
 const SplitPDF = require('./lib-pdf/SplitPDF.js')
@@ -11,7 +12,7 @@ let main = async function () {
 
   for (let i = 0; i < files.length; i++) {
     let file = files[i]
-    console.log(file)
+    // console.log(file)
     if (file.endsWith('.pdf') === false) {
       continue
     }
@@ -34,7 +35,8 @@ let main = async function () {
     // -----------------------
 
     let cacheFile = file
-    let splitInformation = await ExtractSplitInformation(cacheFile)
+    fs.copyFileSync(cacheFile, '/tmp/tmp.pdf')
+    let splitInformation = await ExtractSplitInformation('/tmp/tmp.pdf')
     // console.log(splitInformation)
     await SplitPDF(cacheFile, splitInformation)
 
