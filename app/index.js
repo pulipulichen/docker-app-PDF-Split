@@ -11,6 +11,7 @@ let main = async function () {
 
   for (let i = 0; i < files.length; i++) {
     let file = files[i]
+    console.log(file)
     if (file.endsWith('.pdf') === false) {
       continue
     }
