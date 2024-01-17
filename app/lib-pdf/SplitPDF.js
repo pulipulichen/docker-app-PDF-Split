@@ -1,5 +1,6 @@
 const path = require('path')
 const ShellSpawn = require('../lib/ShellSpawn.js')
+const ShellExec = require('../lib/ShellExec.js')
 // const {AnnotationFactory} = require('annotpdf');
 const pdf = require('pdf-page-counter')
 const fs = require('fs')
