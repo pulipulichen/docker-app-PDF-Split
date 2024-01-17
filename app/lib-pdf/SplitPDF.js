@@ -4,6 +4,8 @@ const ShellSpawn = require('../lib/ShellSpawn.js')
 const pdf = require('pdf-page-counter')
 const fs = require('fs')
 
+const isColab = require('../lib/isColab.js')
+
 module.exports = async function (inputFile, splitInformation) {
 
   if (Array.isArray(splitInformation) === false) {
@@ -48,6 +50,15 @@ module.exports = async function (inputFile, splitInformation) {
     console.log(cmd.join(' '))
     
     await ShellSpawn(cmd)
+  }
+
+  if (isColab) {
+    try {
+      await ShellExec(`cd "/output/${basenameNoExt}/"; zip -r -j "../${basenameNoExt}.zip" ./*`)
+    }
+    catch (e) {
+      console.error(e)
+    }
   }
 
   // await execAsync(`LC_ALL=C; cd "${path.join(__dirname, '../output/')}"; 7z a -mx=9 -ms=on "./${basenameNoExt}.7z" ${files.join(' ')}`)
