@@ -14,7 +14,7 @@ module.exports = async function (inputFile, splitInformation) {
   // let basename = path.basename(inputFile)
   let basenameNoExt = path.parse(inputFile).name
 
-  await ShellSpawn([`mkdir`, `-p`, `"${path.join(__dirname, '../../output/' + basenameNoExt)}"`])
+  await ShellSpawn([`mkdir`, `-p`, `"${path.join('/output/' + basenameNoExt)}"`])
 
   // let files = []
   for (let i = 0; i < splitInformation.length; i++) {
@@ -44,7 +44,7 @@ module.exports = async function (inputFile, splitInformation) {
     } 
 
     outputName = outputName + '.pdf'
-    let cmd = [`qpdf`, `--decrypt`, `"${inputFile}"`, `--pages`, `"${inputFile}"`, `${start}-${end}`, `--`, `"${path.join(__dirname, '../../output/' + basenameNoExt + '/',  outputName)}"`]
+    let cmd = [`qpdf`, `--decrypt`, `"${inputFile}"`, `--pages`, `"${inputFile}"`, `${start}-${end}`, `--`, `"${path.join('/output/' + basenameNoExt + '/',  outputName)}"`]
     console.log(cmd.join(' '))
     
     await ShellSpawn(cmd)
