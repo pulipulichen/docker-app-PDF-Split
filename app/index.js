@@ -1,5 +1,5 @@
 const ShellSpawn = require('./lib/ShellSpawn')
-const GetExistedArgv = require('./lib/GetExistedArgv')
+const GetFiles = require('./lib/GetFiles')
 
 const path = require('path')
 
@@ -7,7 +7,7 @@ const ExtractSplitInformation = require('./lib-pdf/ExtractSplitInformation.js')
 const SplitPDF = require('./lib-pdf/SplitPDF.js')
 
 let main = async function () {
-  let files = GetExistedArgv()
+  let files = GetFiles()
 
   for (let i = 0; i < files.length; i++) {
     let file = files[i]
