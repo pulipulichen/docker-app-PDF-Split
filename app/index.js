@@ -35,8 +35,7 @@ let main = async function () {
     // -----------------------
 
     let cacheFile = file
-    fs.copyFileSync(cacheFile, '/tmp/tmp.pdf')
-    let splitInformation = await ExtractSplitInformation('/tmp/tmp.pdf')
+    let splitInformation = await ExtractSplitInformation(cacheFile)
     // console.log(splitInformation)
     await SplitPDF(cacheFile, splitInformation)
 

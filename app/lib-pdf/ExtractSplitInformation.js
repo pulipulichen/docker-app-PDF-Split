@@ -4,6 +4,8 @@ const path = require('path')
 module.exports = async function (inputFile) {
 
   // console.log(AnnotationFactory.loadFile)
+
+  // console.log(inputFile)
   let factory = await AnnotationFactory.loadFile(inputFile)
   let filename = path.basename(inputFile)
   if (filename.indexOf('.') > -1) {
