@@ -2,9 +2,13 @@
 
 - https://docs.docker.com/get-started/04_sharing_app/
 - `docker image ls | head` 找出合適的名稱，例如「docker-app-pdf-split-app」
-- 建立對應的repo https://hub.docker.com/
-- https://hub.docker.com/repository/docker/pudding/docker-app/general
-- pudding/docker-app
-- `docker tag docker-app-pdf-split-app pudding/docker-app:node-18-20230816`
-- `docker push pudding/docker-app:node-18-20230816`
-- 修改Dockerfile `FROM pudding/docker-app:node-18-20230816`
+- 建立合適的repo https://hub.docker.com/
+
+- 修改commit-docker-image.sh
+- 修改udocker.sh
+IMAGE_NAME=pudding/docker-web:docker-web-apache-solr-app-20231101-0056
+
+- 修改docker-compose-template.yaml
+image: pudding/docker-web:docker-web-apache-solr-app-20231101-0056
+
+- 加入到監控清單 https://github.com/democwise2016/dockerhub-image-refresher/edit/main/docker-image-list.txt
