@@ -19,7 +19,7 @@ module.exports = async function (inputFile) {
     pages = await factory.getAnnotations()
   }
   catch (e) {
-    console.log('PDF格式錯誤。嘗試用PDF Arragner轉存。')
+    console.log('PDF format is error. Try to use pdftk to fix it.')
     let tmpPDF = '/tmp/o.pdf'
     if (fs.existsSync(tmpPDF)) {
       fs.unlinkSync(tmpPDF)
