@@ -24,7 +24,7 @@ module.exports = async function (inputFile) {
     if (fs.existsSync(tmpPDF)) {
       fs.unlinkSync(tmpPDF)
     }
-    await ShellSpawn(['pdftk', inputFile, 'cat', 'output', tmpPDF, ])
+    await ShellSpawn(['pdftk', `"${inputFile}"`, 'cat', 'output', tmpPDF, ])
     factory = await AnnotationFactory.loadFile(tmpPDF)
     pages = await factory.getAnnotations()
   }
