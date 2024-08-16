@@ -1,5 +1,7 @@
 const {AnnotationFactory} = require('annotpdf');
 const path = require('path')
+const ShellSpawn = require('./../lib/ShellSpawn.js')
+const fs = require('fs')
 
 module.exports = async function (inputFile) {
 
@@ -12,7 +14,21 @@ module.exports = async function (inputFile) {
     filename = filename.slice(0, filename.lastIndexOf('.'))
   }
   
-  let pages = await factory.getAnnotations()
+  let pages
+  try {
+    pages = await factory.getAnnotations()
+  }
+  catch (e) {
+    console.log('PDF格式錯誤。嘗試用PDF Arragner轉存。')
+    let tmpPDF = '/tmp/o.pdf'
+    if (fs.existsSync(tmpPDF)) {
+      fs.unlinkSync(tmpPDF)
+    }
+    await ShellSpawn(['pdftk', inputFile, 'cat', 'output', tmpPDF, ])
+    factory = await AnnotationFactory.loadFile(tmpPDF)
+    pages = await factory.getAnnotations()
+  }
+  
 
   let splitInformation = []
   // console.log()
